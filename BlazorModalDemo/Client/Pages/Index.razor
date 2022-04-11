@@ -7,3 +7,18 @@
 Welcome to your new app.
 
 <SurveyPrompt Title="How is Blazor working for you?" />
+
+<div class="blazor-modal-demo">
+    <button value="upload" aria-label="Upload" @onclick="@ShowModal">
+        <i class="material-icons">cloud_upload</i>
+    </button>
+</div>
+
+@inject IModalService Modal
+
+@code {
+    void ShowModal()
+    {
+        Modal.Show<Upload>("Upload");
+    }
+}

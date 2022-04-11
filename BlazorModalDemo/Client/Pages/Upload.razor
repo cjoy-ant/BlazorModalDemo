@@ -1,0 +1,27 @@
+﻿<section class="upload">
+    <div class="input">
+        <label for="UploadFileInput">Upload a WAV file:</label>
+        <br/><br/>
+        <InputFile accept="audio/wav" name="UploadFileInput" />
+    </div>
+    <div class="buttons">
+        <button @onclick="@Submit" class="btn btn-primary">Upload</button>
+        <button @onclick="@Cancel" class="btn btn-secondary">Cancel</button>
+    </div>
+</section>
+
+@using Blazored.Modal
+
+@code {
+    [CascadingParameter] BlazoredModalInstance ModalInstance { get; set; } = default!;
+
+    void Submit()
+    {
+        ModalInstance.CloseAsync(ModalResult.Ok(true));
+    }
+
+    void Cancel()
+    {
+        ModalInstance.CancelAsync();
+    }
+}
